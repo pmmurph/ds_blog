@@ -17,7 +17,7 @@
       <pubDate>Mon, 28 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/2019/01/28/shiny-ensemble/</guid>
-      <description>Application Link (external)PurposeThis application takes in a .txt file with two columns delimited by a ‘|’. ex: ‘date’|‘value’ or more specifically yyyy-mm-dd|value. This was created for use in a live project, so thats the reason why these input restrictions exist. It also has the distinction of being my first Shiny app and as such I am inclined to leave it in it’s raw state. I probably wont make many changes to it, however i will consider making a better one from scratch in the future.</description>
+      <description>Application Link (external)PurposeThis application takes in a .txt file with two columns delimited by a ‘|’. ex: ‘date’|‘value’ or more specifically yyyy-mm-dd|value. This was created for use in a live project, so that is the reason why these input restrictions exist. It also has the distinction of being my first Shiny app and as such I am inclined to leave it in it’s raw state. I probably wont make many changes to it, however i will consider making a better one from scratch in the future.</description>
     </item>
     
   </channel>

@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/post/2019/01/29/shiny-lm/</loc>
+    <lastmod>2019-01-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/2019/01/28/shiny-ensemble/</loc>
     <lastmod>2019-01-28T00:00:00+00:00</lastmod>
   </url>
@@ -35,12 +40,12 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2019-01-28T00:00:00+00:00</lastmod>
+    <lastmod>2019-01-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2019-01-28T00:00:00+00:00</lastmod>
+    <lastmod>2019-01-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -56,7 +61,7 @@
   
   <url>
     <loc>/categories/shiny-applications/</loc>
-    <lastmod>2019-01-28T00:00:00+00:00</lastmod>
+    <lastmod>2019-01-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -97,8 +102,26 @@
   </url>
   
   <url>
+    <loc>/tags/generalized-linear-models/</loc>
+    <lastmod>2019-01-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/glm/</loc>
+    <lastmod>2019-01-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/histogram/</loc>
     <lastmod>2019-01-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/lm/</loc>
+    <lastmod>2019-01-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -134,7 +157,7 @@
   
   <url>
     <loc>/tags/shiny/</loc>
-    <lastmod>2019-01-28T00:00:00+00:00</lastmod>
+    <lastmod>2019-01-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

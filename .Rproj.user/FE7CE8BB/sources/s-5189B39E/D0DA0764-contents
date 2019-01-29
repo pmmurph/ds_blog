@@ -1,0 +1,56 @@
+---
+title: Loading Data
+author: Patrick Murphy
+date: '2019-01-23'
+slug: loading-data
+categories:
+  - R Basics
+tags:
+  - read.table
+  - readr
+output:
+  blogdown::html_page:
+    toc: true
+---
+```{r include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+<hr/>  
+
+##read.table
+This should be one of the first functions you learn, it allows for adhoc data entry:
+```{r read1}
+data<- read.table(header= TRUE, text="
+name age
+Homer 45
+Marge 43
+Bart 13
+Lisa 11
+Maggie 2
+")
+
+data
+```
+Saving data as a csv is a very common operation, as this format can be opened in any text editor, sql client and/or analysis software including excel.  
+```{r read2}
+write.csv(data,"simpsons.csv")
+read.csv("simpsons.csv") #read.csv is simply a wrapper for read.table 
+```
+
+##readr
+These functions are part of the utils package in base R.  You will notice that there are some unwanted side effects with the data read in this way.  First, string data is read in as a factor.  This is great if your going to use that feature as a factor or category, but it is best practice to read in a string as a string, especially if it is ID data.  You will also notice that read.csv creates a row number column by default.  For most workflows neither of these characteristics are very useful.  
+```{r read3}
+str(read.csv("simpsons.csv"))  #notice a factor and three variables
+```
+
+Using the readr package from the tidyverse produces a object of class tbl, which has more attractive features for heavy data manipulating.
+
+```{r read4}
+library(readr)
+write_csv(data,"simpsons.csv")  #readr uses '_' instead of '.'
+str(read_csv("simpsons.csv"))  #this is how we want our data
+```
+##Other formats?
+To read in excel workbook formats use the readxl package.  Writing excel sheets is a bit trickier.  I will do a lab involving openxlsx in the future, which will go over how to format a .xlsx sheet from with in R.  In the meantime my recommendation is to keep the data 'flat' in a csv.  Use excel to open that file and then apply any formatting directly in excel.  
+
+For other legacy formats such as SAS (.sas7bdat), SPSS (.sav, .zsav, .por) or Stata (.dta) use the haven package. 

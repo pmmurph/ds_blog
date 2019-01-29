@@ -1,0 +1,28 @@
+---
+title: Linear Modeler w/ Shiny
+author: Patrick Murphy
+date: '2019-01-29'
+slug: shiny-lm
+categories: 
+  - Shiny Applications
+tags: 
+  - glm
+  - lm
+  - generalized linear models
+  - shiny
+---
+
+
+
+<hr/>
+<div id="application-link-external" class="section level3">
+<h3><a href="https://murphy-patrick.shinyapps.io/logit_app/" target="_blank">Application Link (external)</a></h3>
+</div>
+<div id="purpose" class="section level2">
+<h2>Purpose</h2>
+<p>This application takes in a .csv file of observational or experimental data with headers. This was a school project written in a class teaching logistic models, however it creates Gaussian regression models as well.</p>
+</div>
+<div id="what-does-it-do" class="section level2">
+<h2>What does it do?</h2>
+<p>The user can simply hit ‘Sample Data’ if they do not have a csv handy. This data is from Hosmer and Lemeshow’s birth weight experiment and is a nice example real world example for getting into glms. There are two main variables of interest in this data, ‘low’ is the binary response indicating if the child had a low birth weight or not and ‘bwt’ is the numeric birth weight in grams. This allows the user to do linear or logistic regression with the sample data as well as some ANOVA on a few categorical regressors. Select one or two variables and then identify their types and hit ‘Run Models’ which will output a model. Various plots and fit data can be seen in the main output window.</p>
+</div>

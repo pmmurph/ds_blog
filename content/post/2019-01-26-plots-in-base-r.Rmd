@@ -32,7 +32,7 @@ attach(iris)    # this loads iris into a search path, so we dont have to type it
 hist(Sepal.Length)
 ```
 
-Hist can also be used to plot densities.  Below the y axis has been transformed to measure the probabilty density of sepal lengths.  The red line shows a smoothed kernal density in contrast to a theoretical normal curve in green.  
+Hist can also be used to plot densities.  Below the y axis has been transformed to measure the probability density of sepal lengths.  The red line shows a smoothed kernel density in contrast to a theoretical normal curve in green.  
 ```{r plot1b}
 hist(Sepal.Length,
      freq = FALSE,
@@ -77,7 +77,7 @@ plot(AirPassengers)
 ```
 
 ##pairs()  
-If you are analizing datasets with 2 or more independent variables, then the pairs function will provide you with a high level view of the feature correlations.  
+If you are analyzing data sets with 2 or more independent variables, then the pairs function will provide you with a high level view of the feature correlations.  
 ```{r plot4}
 pairs(iris)
 ```
@@ -100,4 +100,4 @@ pairs(iris,    # Most of these plot commands can take funtions as arguments
       }
 )
 ```
-Alot of custimization can be done with base R graphics.
+A lot of customization can be done with base R graphics.

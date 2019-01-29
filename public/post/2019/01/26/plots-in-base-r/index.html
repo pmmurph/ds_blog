@@ -59,7 +59,7 @@
 attach(iris)    # this loads iris into a search path, so we dont have to type it anymore
 hist(Sepal.Length)</code></pre>
 <p><img src="/post/2019-01-26-plots-in-base-r_files/figure-html/plot1-1.png" width="672" /></p>
-<p>Hist can also be used to plot densities. Below the y axis has been transformed to measure the probabilty density of sepal lengths. The red line shows a smoothed kernal density in contrast to a theoretical normal curve in green.</p>
+<p>Hist can also be used to plot densities. Below the y axis has been transformed to measure the probability density of sepal lengths. The red line shows a smoothed kernel density in contrast to a theoretical normal curve in green.</p>
 <pre class="r"><code>hist(Sepal.Length,
      freq = FALSE,
      breaks = seq(from=3, to=9, by=.333),      # always check the breaks of a histogram
@@ -106,7 +106,7 @@ plot(AirPassengers)</code></pre>
 </div>
 <div id="pairs" class="section level2">
 <h2>pairs()</h2>
-<p>If you are analizing datasets with 2 or more independent variables, then the pairs function will provide you with a high level view of the feature correlations.</p>
+<p>If you are analyzing data sets with 2 or more independent variables, then the pairs function will provide you with a high level view of the feature correlations.</p>
 <pre class="r"><code>pairs(iris)</code></pre>
 <p><img src="/post/2019-01-26-plots-in-base-r_files/figure-html/plot4-1.png" width="672" /></p>
 <p>For larger sets you will have to zoom in, and of course there is an upper bound for how many features you can feasibly plot in this way.</p>
@@ -126,7 +126,7 @@ plot(AirPassengers)</code></pre>
                       points(x,y, pch = 19, col= Species)
       }
 )</code></pre>
-<p><img src="/post/2019-01-26-plots-in-base-r_files/figure-html/plot4b-3.png" width="100%" /> Alot of custimization can be done with base R graphics.</p>
+<p><img src="/post/2019-01-26-plots-in-base-r_files/figure-html/plot4b-3.png" width="100%" /> A lot of customization can be done with base R graphics.</p>
 </div>
 
 </main>

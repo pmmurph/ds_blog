@@ -21,7 +21,7 @@ tags:
 </div>
 <div id="purpose" class="section level2">
 <h2>Purpose</h2>
-<p>This application takes in a .txt file with two columns delimited by a ‘|’. ex: ‘date’|‘value’ or more specifically yyyy-mm-dd|value. This was created for use in a live project, so thats the reason why these input restrictions exist. It also has the distinction of being my first Shiny app and as such I am inclined to leave it in it’s raw state. I probably wont make many changes to it, however i will consider making a better one from scratch in the future.</p>
+<p>This application takes in a .txt file with two columns delimited by a ‘|’. ex: ‘date’|‘value’ or more specifically yyyy-mm-dd|value. This was created for use in a live project, so that is the reason why these input restrictions exist. It also has the distinction of being my first Shiny app and as such I am inclined to leave it in it’s raw state. I probably wont make many changes to it, however i will consider making a better one from scratch in the future.</p>
 </div>
 <div id="what-does-it-do" class="section level2">
 <h2>What does it do?</h2>
@@ -31,7 +31,7 @@ tags:
 <h2>Why is this better than a normal smoothing forecast?</h2>
 <p>This classic paper can go over the basic theory way better than I can :<br />
 <strong><em>J. M. Bates and C. W. J. Granger, Source: OR, Vol. 20, No. 4 (Dec., 1969), pp. 451-468</em></strong><br />
-In R we can simuliate what happens to the variance of combined error vectors. Assuming of course that the errors are unbiased.</p>
+In R we can simulate what happens to the variance of combined error vectors. Assuming of course that the errors are unbiased.</p>
 <pre class="r"><code>set.seed(423)
 epsilon1&lt;- rnorm(120)
 epsilon2&lt;- rnorm(120)

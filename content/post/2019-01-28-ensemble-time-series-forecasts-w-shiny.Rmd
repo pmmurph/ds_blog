@@ -23,7 +23,7 @@ knitr::opts_chunk$set(collapse = TRUE)
 ###<a href="https://murphy-patrick.shinyapps.io/ensemble_forecaster/" target="_blank">Application Link (external)</a>
 
 ##Purpose
-This application takes in a .txt file with two columns delimited by a '|'.  ex: 'date'|'value' or more specifically yyyy-mm-dd|value.  This was created for use in a live project, so thats the reason why these input restrictions exist.  It also has the distinction of being my first Shiny app and as such I am inclined to leave it in it's raw state.  I probably wont make many changes to it, however i will consider making a better one from scratch in the future.
+This application takes in a .txt file with two columns delimited by a '|'.  ex: 'date'|'value' or more specifically yyyy-mm-dd|value.  This was created for use in a live project, so that is the reason why these input restrictions exist.  It also has the distinction of being my first Shiny app and as such I am inclined to leave it in it's raw state.  I probably wont make many changes to it, however i will consider making a better one from scratch in the future.
 
 ##What does it do?
 The user can simply hit 'Run Models' and it will load a sample of monthly sales figures.  It will hold out the last 12 months by default, run three models and then an ensemble of the three.  The user can see the model outputs as well as the RMSE of all four model fits.  Using this one could adjust the weights of the three parent models and re-run on a forecast horizon.  The out put is printed in plain text afterwards.
@@ -31,7 +31,7 @@ The user can simply hit 'Run Models' and it will load a sample of monthly sales 
 ##Why is this better than a normal smoothing forecast?  
 This classic paper can go over the basic theory way better than I can :  
 ***J. M. Bates and C. W. J. Granger, Source: OR, Vol. 20, No. 4 (Dec., 1969), pp. 451-468***     
-In R we can simuliate what happens to the variance of combined error vectors.  Assuming of course that the errors are unbiased.
+In R we can simulate what happens to the variance of combined error vectors.  Assuming of course that the errors are unbiased.
 ```{r ensem1}
 set.seed(423)
 epsilon1<- rnorm(120)

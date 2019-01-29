@@ -66,11 +66,38 @@
     </item>
     
     <item>
+      <title>generalized linear models</title>
+      <link>/tags/generalized-linear-models/</link>
+      <pubDate>Tue, 29 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/generalized-linear-models/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>glm</title>
+      <link>/tags/glm/</link>
+      <pubDate>Tue, 29 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/glm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>histogram</title>
       <link>/tags/histogram/</link>
       <pubDate>Sat, 26 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/histogram/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lm</title>
+      <link>/tags/lm/</link>
+      <pubDate>Tue, 29 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/lm/</guid>
       <description></description>
     </item>
     
@@ -122,7 +149,7 @@
     <item>
       <title>shiny</title>
       <link>/tags/shiny/</link>
-      <pubDate>Mon, 28 Jan 2019 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 29 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/shiny/</guid>
       <description></description>

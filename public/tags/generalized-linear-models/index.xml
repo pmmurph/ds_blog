@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>generalized linear models on A Simple Data Science Blog…</title>
+    <link>/tags/generalized-linear-models/</link>
+    <description>Recent content in generalized linear models on A Simple Data Science Blog…</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 29 Jan 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/generalized-linear-models/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Linear Modeler w/ Shiny</title>
+      <link>/post/2019/01/29/shiny-lm/</link>
+      <pubDate>Tue, 29 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2019/01/29/shiny-lm/</guid>
+      <description>Application Link (external)PurposeThis application takes in a .csv file of observational or experimental data with headers. This was a school project written in a class teaching logistic models, however it creates Gaussian regression models as well.
+What does it do?The user can simply hit ‘Sample Data’ if they do not have a csv handy. This data is from Hosmer and Lemeshow’s birth weight experiment and is a nice example real world example for getting into glms.</description>
+    </item>
+    
+  </channel>
+</rss>
