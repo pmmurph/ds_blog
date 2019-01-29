@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Labs on A Simple Data Science Blog…</title>
+    <link>/categories/labs/</link>
+    <description>Recent content in Labs on A Simple Data Science Blog…</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 23 Jan 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/labs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Loading Data</title>
+      <link>/post/2019/01/23/loading-data/</link>
+      <pubDate>Wed, 23 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2019/01/23/loading-data/</guid>
+      <description>You can’t really do much until you read in some ones and zeros. Here are some common ways.
+read.tableThis should be one of the first functions you learn, it allows for adhoc data entry:
+data&amp;lt;- read.table(header= TRUE, text=&amp;quot;name ageHomer 45Marge 43Bart 13Lisa 11Maggie 2&amp;quot;)data## name age## 1 Homer 45## 2 Marge 43## 3 Bart 13## 4 Lisa 11## 5 Maggie 2Saving data as a csv is a very common operation, as this format can be opened in any text editor, sql client and/or analysis software including excel.</description>
+    </item>
+    
+  </channel>
+</rss>

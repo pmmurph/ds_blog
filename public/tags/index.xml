@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on A Simple Data Science Blog…</title>
+    <link>/tags/</link>
+    <description>Recent content in Tags on A Simple Data Science Blog…</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 28 Jan 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ARIMA</title>
+      <link>/tags/arima/</link>
+      <pubDate>Mon, 28 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/arima/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>base R</title>
+      <link>/tags/base-r/</link>
+      <pubDate>Sat, 26 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/base-r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>box plot</title>
+      <link>/tags/box-plot/</link>
+      <pubDate>Sat, 26 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/box-plot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>data types</title>
+      <link>/tags/data-types/</link>
+      <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/data-types/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ensemble model</title>
+      <link>/tags/ensemble-model/</link>
+      <pubDate>Mon, 28 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/ensemble-model/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>exp. smoothing</title>
+      <link>/tags/exp.-smoothing/</link>
+      <pubDate>Mon, 28 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/exp.-smoothing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>histogram</title>
+      <link>/tags/histogram/</link>
+      <pubDate>Sat, 26 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/histogram/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>plot matrix</title>
+      <link>/tags/plot-matrix/</link>
+      <pubDate>Sat, 26 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/plot-matrix/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>plots</title>
+      <link>/tags/plots/</link>
+      <pubDate>Sat, 26 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/plots/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>read.table</title>
+      <link>/tags/read.table/</link>
+      <pubDate>Wed, 23 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/read.table/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>readr</title>
+      <link>/tags/readr/</link>
+      <pubDate>Wed, 23 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/readr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>scatter plots</title>
+      <link>/tags/scatter-plots/</link>
+      <pubDate>Sat, 26 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/scatter-plots/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>shiny</title>
+      <link>/tags/shiny/</link>
+      <pubDate>Mon, 28 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/shiny/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>time series</title>
+      <link>/tags/time-series/</link>
+      <pubDate>Mon, 28 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/time-series/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vectors</title>
+      <link>/tags/vectors/</link>
+      <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/vectors/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

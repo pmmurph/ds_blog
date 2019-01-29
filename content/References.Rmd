@@ -1,0 +1,25 @@
+---
+title: "References"
+---
+##_R_  
+* R Core Team (2018). R: A language and environment for statistical computing. R Foundation for Statistical Computing,
+  Vienna, Austria. URL https://www.R-project.org/.  
+  
+##_Rstudio_  
+* RStudio Team (2016). RStudio: Integrated Development for R. RStudio, Inc., Boston, MA URL http://www.rstudio.com/.  
+
+##_Packages_  
+* Hadley Wickham, Jim Hester and Romain Francois (2018). readr: Read Rectangular Text Data. R package version 1.3.1.
+  https://CRAN.R-project.org/package=readr
+* Hadley Wickham and Jennifer Bryan (2018). readxl: Read Excel Files. R package version 1.2.0.
+  https://CRAN.R-project.org/package=readxl
+* Hadley Wickham and Evan Miller (2018). haven: Import and Export 'SPSS', 'Stata' and 'SAS' Files. R package version 2.0.0.
+  https://CRAN.R-project.org/package=haven  
+  
+##_Web Resources_  
+* R for Data Science - https://r4ds.had.co.nz/introduction.html
+* Advaced R - http://adv-r.had.co.nz/
+* Cookbook for R - http://www.cookbook-r.com/
+* R Companion - http://rcompanion.org/handbook/
+* UCLA idre - https://stats.idre.ucla.edu/
+* MIT OCW - https://ocw.mit.edu/index.htm

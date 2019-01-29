@@ -1,0 +1,12 @@
+---
+title: Home
+---
+
+
+# A Simple Data Science Blog...
+
+## _Greetings!_
+
+My name is Patrick Murphy, I am a recent graduate student and commercial business analyst currently working in the pharmaceutical industry.  Most of our graduate coursework was GLM based and utilized a SAS environment.  While SAS certainly shines in robust output and back-end support, I have found that other tools are necessary to round out one's capabilities.  R provides much more flexibility for minimal cost.  This website is meant to serve as a portfolio of example labs, scripts and projects all done in R.  
+
+You can see various [categories](/categories/) and [tags](/tags/) to find a post or vist a [reference](/references/) for a much deeper dive into a topic.  Otherwise, all posts are listed below by date. 

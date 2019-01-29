@@ -1,0 +1,42 @@
+library(tidyverse)
+library(forecast)
+library(zoo)
+
+
+data<- read_csv('ipi.csv')
+names(data)<- c('month', 'ipi')
+data2<- zoo(data$ipi, order.by = data$month, frequency = 12)
+train<- window(data2, end = '2008-06-01')
+test<-  window(data2, start = '2008-07-01')
+
+es<- ets(ts(train, frequency = 12))
+ar<- auto.arima(ts(train, frequency = 12))
+
+summary(es)
+summary(ar)
+
+
+es_f<- forecast(es, h=120)
+ar_f<- forecast(ar, h=120)
+
+fores<-data_frame(
+  month= as.Date(index(test)),
+  es_fit= es_f$mean,
+  ar_fit= ar_f$mean
+) %>% gather(key= 'key', value = 'value', -month)
+
+ggplot()+
+  geom_line(data=filter(data, month> as.Date('1980-01-01')), aes(x= month, y= ipi), alpha=.7)+
+  geom_line(data= fores, aes(x= month,y= value, col=key ), linetype= 1)+
+  scale_color_brewer(type= 'qua', palette = 'Set1')+
+  theme_classic()
+
+tab1<- data_frame(
+  month= as.Date(index(test)),
+  es_res= test-es_f$mean,
+  ar_res= test-ar_f$mean
+)
+mean(tab1$es_res)
+mean(tab1$ar_res)
+
+

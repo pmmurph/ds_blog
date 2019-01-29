@@ -1,0 +1,385 @@
+library(tidyverse)
+library(forecast)
+library(zoo)
+library(broom)
+library(lubridate)
+library(astsa)
+library(knitr)
+library(ggthemes)
+
+options(stringsAsFactors = FALSE)
+
+data<- read_csv('ipi.csv')
+names(data)<- c('date', 'ipi')
+data<- zoo(data$ipi, order.by = data$date, frequency = 12)
+data<- window(data, start= '2009-01-01')
+train<- window(data, end= '2017-06-01')
+test<- window(data, start= '2017-07-01')
+
+data_sets<- bind_rows(
+ data.frame(Set= 'Training',Month= index(train), Index= coredata(train)),
+ data.frame(Set= 'Test',Month= index(test), Index= coredata(test)))
+
+  
+ggplot(data = data_sets, aes(x=Month, y= Index ))+
+  geom_line()+
+  geom_vline(xintercept = ymd('2017-06-15'), linetype= 2)+
+  theme_tufte(base_family= 'serif')+labs(title= 'Industrial Production Index for Food & Beverage  --  Fig. 1',
+                     subtitle= 'Proposed Training and Cross-Validation Sets')
+
+
+
+
+
+
+##########################################################################################
+##########################################################################################
+
+## seasonal decomp
+
+decomp<- decompose(ts(train, frequency = 12), type= 'add')
+autoplot(decomp)+
+  labs(title= 'Trend & Season Decomposition  --  Fig. 2')+
+  theme_classic()
+
+mos<- c('Jan', 'Feb', 'Mar', 'Apr','May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec')
+kable(data.frame(Month= mos, Seasonal_Adj= decomp$figure), digits = 3, row.names = FALSE)
+
+
+y_decomp<- decomp$x-decomp$seasonal
+t<- c(1:length(y_decomp))
+t2<- t^2
+t3<- t^3
+fit<- lm(y_decomp~ t )
+fit2<- lm(y_decomp~ t + t2)
+summary(fit)
+summary(fit2)
+
+tidy(fit)
+tidy(fit2)
+glance(fit)
+glance(fit2)
+head(augment(fit2),5)
+
+Mod.Compare <- data.frame(Model = c("Linear fit", "Quadratic fit"))
+Mod.Compare <- cbind(Mod.Compare,
+                     data.frame(rbind(glance(fit),glance(fit2))))
+kable(select(Mod.Compare, 1,2,9,10), digits=3, row.names = FALSE)
+
+
+fits<- data.frame(cbind(t,augment(fit)$y_decomp, augment(fit)$.fitted, augment(fit2)$.fitted))
+names(fits)<- c('Time Period', "Decomposed Y Values", "Linear Fit", "Quadratic Fit")
+
+fits %>% gather(key= "Legend", value= "value", c("Decomposed Y Values", "Linear Fit", "Quadratic Fit")) %>% 
+  ggplot(aes(x=`Time Period`, y= value))+
+  geom_line(aes( col= Legend))+
+  scale_color_manual(values = c('black', 'red', 'blue'))+
+  labs(title= "Linear Fit vs. Quadratic Fit  --  Fig. 3", y= 'Index')+
+  theme_classic()+
+  theme(legend.position = 'bottom')
+  
+   
+
+horizon<- data.frame(t= c(1:117), t2= c(1:117)^2)
+pred<- predict(fit2, newdata = horizon, interval = 'pred')
+moe<- (pred[, 3]-pred[, 2])/2
+recomp_y<- pred[, 1]+rep(decomp$figure, length.out= 117)
+
+
+result<- data.frame(cbind(
+  pred,
+  moe,
+  sa= rep(decomp$figure, length.out= 117),
+  recomp_y,
+  recomp_low= recomp_y-moe,
+  recomp_hi= recomp_y+moe
+))
+
+result$Month<- c(index(data),as_date( c('2018-07-01', '2018-08-01', '2018-09-01')))
+orig<- data.frame(Month= index(data), Index= coredata(data)) %>% filter(Month>= ymd('2017-01-01'))
+res_pred<- filter(result, Month>=ymd('2017-07-01'))
+res_rib<- filter(result, Month>=ymd('2018-07-01'))
+ggplot()+
+  geom_line(data=orig, aes(x= Month, y= Index))+
+  geom_linerange(data= res_rib, aes(x= Month, ymin=recomp_low, ymax= recomp_hi ), col= 'blue')+
+  geom_point(data= res_rib, aes(x= Month, y= recomp_y), col='blue')+
+  geom_line(data= res_pred, aes(x= Month, y= recomp_y), col='blue', linetype=2)+
+  labs(title= 'Industrial Production Index for Food & Beverage  --  Fig.4',
+       subtitle= 'Forecasted Out to 2018-09-01 Using Seasonal Decomposition Methods ( Actuals in Black)')+
+  theme_classic()+
+  coord_fixed(ratio = 35)
+
+
+na<- c('Month', 'Recomp', 'Low', 'Hi')
+result_small<- select(result, 9,6,7,8)
+names(result_small)<- na
+kable(tail(result_small,3), digits = 3, row.names= FALSE,caption = 'Seasonal Decomposition Results')
+
+
+
+
+
+
+
+
+
+
+
+
+
+###############################################################################################
+###############################################################################################
+
+##  e smooth
+
+es1<- ets(ts(train, frequency = 12))
+summary(es1)
+
+
+
+es<- list(
+ets(ts(train, frequency = 12), model='MMM', damped=TRUE),
+ets(ts(train, frequency = 12), model='MMM', damped=FALSE),
+ets(ts(train, frequency = 12), model='MAA', damped=TRUE),
+ets(ts(train, frequency = 12), model='MAA', damped=FALSE),
+ets(ts(train, frequency = 12), model='MAM', damped=TRUE),
+ets(ts(train, frequency = 12), model='MAM', damped=FALSE)
+
+)
+nm<- c('MMdM','MMM','MAdA','MAA','MAdM','MAM')
+names(es)<- nm
+
+es_f<- transpose(es)
+es_fitted<- bind_rows(es_f$fitted)
+es_fitted$Month<- index(train)
+es_act<- data.frame(Value=coredata(train), Month= index(train))
+es_fitted %>% gather(key='Legend', value = 'Value', -Month) %>% 
+  ggplot(aes(x=Month, y=Value))+
+  geom_line(alpha=.7)+
+  facet_wrap(~Legend)+
+  labs(title= 'Possible Holt-Winters Smoothing Models vs. Actual (in Black) --  Fig. 5')+
+  theme_classic()
+
+es_AICC<- data.frame(Model=names(es_f$aicc),
+                     AICC=unlist(es_f$aicc),
+                     AIC=unlist(es_f$aic),
+                     BIC=unlist(es_f$bic)) %>% 
+  arrange(AICC)
+
+
+kable(es_AICC, digits = 3, row.names = FALSE)
+
+autoplot(es$MAA)+
+  labs(title= 'Components of Holt-Winters Additive (MAA) Model -- Fig. 6')+
+  theme_classic()
+
+fore_fun<- function(x){forecast(x, h=15)}
+acc_fun<-  function(x){accuracy(x, x= test)}
+es_fore<-map(es, fore_fun)
+acc_fore<- map(es_fore, acc_fun)
+
+acc_fore
+es_fore$AAA
+result_es<- data.frame(
+  Month= seq(from= as.Date('2017-07-01'), to= as.Date('2018-09-01'), by= 'month'),
+  Predicted= es_fore$MAA$mean,
+  Low= es_fore$MAA$lower[,2],
+  Hi= es_fore$MAA$upper[,2]
+)
+kable(tail(result_es,3), digits=3, row.names = FALSE)
+
+
+
+
+orig<- data.frame(Month= index(data), Index= coredata(data)) %>% filter(Month>= ymd('2017-01-01'))
+res_pred<- filter(result_es, Month>=ymd('2017-07-01'))
+res_rib<- filter(result_es, Month>=ymd('2018-07-01'))
+ggplot()+
+  geom_line(data=orig, aes(x= Month, y= Index))+
+  geom_linerange(data= res_rib, aes(x= Month, ymin=Low, ymax= Hi ), col= 'blue')+
+  geom_point(data= res_rib, aes(x= Month, y= Predicted), col='blue')+
+  geom_line(data= res_pred, aes(x= Month, y= Predicted), col='blue', linetype=2)+
+  labs(title= 'Industrial Production Index for Food & Beverage  --  Fig.7',
+       subtitle= "Forecasted Out to 2018-09-01 Using Holt-Winters 'MAA' Smoothing ( Actuals in Black)")+
+  theme_classic()+
+  coord_fixed(ratio = 35)
+
+
+
+## arima 
+
+ar1<- auto.arima(ts(train, frequency = 12), xreg = t2)
+summary(ar1)
+
+t<- c(1:length(train))
+t2<- t^2
+time<- cbind(t,t2)
+
+
+ar2<- Arima(ts(train, frequency = 12), order= c(0,1,1), seasonal = list( order= c(0,1,1), period= 12), xreg = matrix(c(t,t2), nrow=102, ncol=2))
+summary(ar2)
+
+a<-ts(train, frequency = 12)
+a2<-diff(diff(a), lag=12)
+par(mfrow= c(2,1))
+plot(diff(a), main= 'Fig. 8  --  First order regular difference', xlab= '', ylab= 'Diff')
+plot(diff(diff(a), lag=12), main= 'First order regular and seasonal difference', xlab= 'Time',ylab= 'Diff' )
+  
+acf2(a2, main= 'Fig. 9  --  ACF/ PACF of twice differenced data')
+
+
+
+ar<- list(
+sarima(a, 1,1,0, 1,1,0,12),
+sarima(a, 1,1,0, 0,1,1,12),
+sarima(a, 0,1,1, 1,1,0,12),
+sarima(a, 0,1,1, 0,1,1,12),
+sarima(a, 0,1,1, 1,1,1,12),
+sarima(a, 1,1,0, 1,1,1,12),
+sarima(a, 1,1,1, 0,1,1,12),
+sarima(a, 1,1,1, 1,1,0,12),
+sarima(a, 1,1,1, 1,1,1,12)
+)
+
+ar2<- list(
+  Arima(a, order=c(1,1,0), seasonal= list( order=c(1,1,0), period= 12)),
+  Arima(a, order=c(1,1,0), seasonal= list( order=c(0,1,1), period= 12)),
+  Arima(a, order=c(0,1,1), seasonal= list( order=c(1,1,0), period= 12)),
+  Arima(a, order=c(0,1,1), seasonal= list( order=c(0,1,1), period= 12)),
+  Arima(a, order=c(0,1,1), seasonal= list( order=c(1,1,1), period= 12)),
+  Arima(a, order=c(1,1,0), seasonal= list( order=c(1,1,1), period= 12)),
+  Arima(a, order=c(1,1,1), seasonal= list( order=c(0,1,1), period= 12)),
+  Arima(a, order=c(1,1,1), seasonal= list( order=c(1,1,0), period= 12)),
+  Arima(a, order=c(1,1,1), seasonal= list( order=c(1,1,1), period= 12))
+)
+nms<- c(
+'Arima- 1,1,0, 1,1,0',
+'Arima- 1,1,0, 0,1,1',
+'Arima- 0,1,1, 1,1,0',
+'Arima- 0,1,1, 0,1,1',
+'Arima- 0,1,1, 1,1,1',
+'Arima- 1,1,0, 1,1,1',
+'Arima- 1,1,1, 0,1,1',
+'Arima- 1,1,1, 1,1,0',
+'Arima- 1,1,1, 1,1,1'
+)
+ar$`Arima- 0,1,1, 0,1,1`
+names(ar)<- nms
+names(ar2)<- nms
+
+ar_f<- transpose(ar)
+ar2_f<- transpose(ar2)
+ar_fore<- map(ar2, fore_fun)
+ar_acc<- map(ar_fore, acc_fun)
+ar_acc
+
+ar_AICC<- data.frame(Model=names(ar2_f$aicc),
+                     AICC=unlist(ar2_f$aicc),
+                     AIC=unlist(ar2_f$aic),
+                     BIC=unlist(ar2_f$bic)) %>% 
+  arrange(AICC)
+
+kable(ar_AICC, digits = 3, row.names = FALSE)
+
+
+
+ar_fore<- forecast(ar2, xreg = c(103:117)^2, h=15)
+ar_fore
+
+result_ar<- data.frame(
+  Month= seq(from= as.Date('2017-07-01'), to= as.Date('2018-09-01'), by= 'month'),
+  Predicted= ar_fore$mean,
+  Low= ar_fore$lower[,2],
+  Hi= ar_fore$upper[,2]
+)
+kable(tail(result_ar,3), digits=3, row.names = FALSE)
+orig<- data.frame(Month= index(data), Index= coredata(data)) %>% filter(Month>= ymd('2017-01-01'))
+res_pred<- filter(result_ar, Month>=ymd('2017-07-01'))
+res_rib<- filter(result_ar, Month>=ymd('2018-07-01'))
+ggplot()+
+  geom_line(data=orig, aes(x= Month, y= Index))+
+  geom_linerange(data= res_rib, aes(x= Month, ymin=Low, ymax= Hi ), col= 'blue')+
+  geom_point(data= res_rib, aes(x= Month, y= Predicted), col='blue')+
+  geom_line(data= res_pred, aes(x= Month, y= Predicted), col='blue', linetype=2)+
+  labs(title= 'Industrial Production Index for Food & Beverage  --  Fig.10',
+       subtitle= "Forecasted Out to 2018-09-01 Using an 'ARIMA 0,1,1, 0,1,1,(12)' Model (Actuals in Black)")+
+  theme_classic()+
+  coord_fixed(ratio = 35)
+  
+
+
+
+######################################################################################
+######################################################################################
+
+
+#results
+
+
+dec_fit<- sqrt(mean((result$recomp_y[103:114]-test)^2))
+es_fit<- sqrt(mean((es_fore$MAA$mean[1:12]-test)^2))
+ar_fit<- sqrt(mean((ar_fore$mean[1:12]-test)^2))
+
+
+
+
+rmse<- data.frame( Model= c('Seasonal Decomposition', 'Holt-Winters', 'ARIMA'), RMSE= c(dec_fit,es_fit,ar_fit))
+kable(rmse, digits = 3, row.names = FALSE)  
+
+
+
+
+box_fun<- function(x){
+  data.frame( Lag= c(6,12,18,24), P_val= c(
+    Box.test(resid(x), type= "Ljung",lag=6)$p.value,
+    Box.test(resid(x), type= "Ljung",lag=12)$p.value,
+    Box.test(resid(x), type= "Ljung",lag=18)$p.value,
+    Box.test(resid(x), type= "Ljung",lag=24)$p.value
+  ))}
+
+
+b_dec<- box_fun(fit2)
+b_es<-  box_fun(es$MAA)
+b_ar<-  box_fun(ar2)
+b_all<- data.frame(
+  Lag= b_dec$Lag,
+  S.Decomp= b_dec$P_val,
+  Holt.W= b_es$P_val,
+  ARIMA= b_ar$P_val)
+kable(b_all, digits = 6, row.names = FALSE)
+car::durbinWatsonTest(as.vector(resid(ar2)))
+
+
+orig<- data.frame(Month= index(data), Index= coredata(data)) %>% filter(Month>= ymd('2017-01-01'))
+res_pred1<- filter(result, Month>=ymd('2017-07-01') & Month <='2018-06-01')
+res_pred2<- filter(result_es, Month>=ymd('2017-07-01') & Month <='2018-06-01')
+res_pred3<- filter(result_ar, Month>=ymd('2017-07-01') & Month <='2018-06-01')
+
+resids<- data.frame(
+  Time= c(1:102),
+  S.Decomp= fit2$residuals,
+  Holt.W= es$MAA$residuals,
+  ARIMA= ar2$residuals
+) %>% gather(key = 'Model', value = 'Residuals', -Time) 
+  
+ggplot(resids, aes(x= Time, y= Residuals))+
+  geom_line()+
+  facet_grid(Model~., scales = 'free')+
+  theme_classic()+
+  labs(title= 'Residuals over time for each model  --  Fig. 11')
+  
+es$MAA
+lmtest::coeftest(ar2)
+ggplot()+
+  geom_line(data=orig, aes(x= Month, y= Index))+
+  geom_line(data= res_pred1, aes(x= Month, y= recomp_y, col= 'S.Decomp'), linetype=2)+
+  geom_line(data= res_pred2, aes(x= Month, y= Predicted, col='Holt.W'), linetype=2)+
+  geom_line(data= res_pred3, aes(x= Month, y= Predicted, col='ARIMA'), linetype=2)+
+  labs(title= 'Industrial Production Index for Food & Beverage  --  Fig. 12',
+       subtitle= "Forecasted Values for Each Model vs. Test Set",
+       col= '')+
+  theme_classic()+
+  theme( legend.position = 'bottom')+
+  scale_color_manual(values = c('red', 'blue', 'green'))+
+  coord_fixed(ratio = 35)
+

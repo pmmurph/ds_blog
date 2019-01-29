@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1548535057561.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3327576220",
+    "id" : "CD3F7FD2",
+    "lastKnownWriteTime" : 1548538816,
+    "last_content_update" : 1548538814702,
+    "path" : "D:/website_content/content/post/2019-01-26-plots-in-base-r.Rmd",
+    "project_path" : "content/post/2019-01-26-plots-in-base-r.Rmd",
+    "properties" : {
+        "cursorPosition" : "37,0",
+        "scrollLine" : "17"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

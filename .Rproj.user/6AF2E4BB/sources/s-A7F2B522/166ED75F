@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1548708524899.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "166ED75F",
+    "lastKnownWriteTime" : 1548710682,
+    "last_content_update" : 1548710682174,
+    "path" : "C:/Work/R/ds_blog/content/post/2019-01-28-ensemble-time-series-forecasts-w-shiny.Rmd",
+    "project_path" : "content/post/2019-01-28-ensemble-time-series-forecasts-w-shiny.Rmd",
+    "properties" : {
+        "cursorPosition" : "32,94",
+        "scrollLine" : "26",
+        "source_window_id" : ""
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

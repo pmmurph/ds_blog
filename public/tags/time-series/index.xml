@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>time series on A Simple Data Science Blog…</title>
+    <link>/tags/time-series/</link>
+    <description>Recent content in time series on A Simple Data Science Blog…</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 28 Jan 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/time-series/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ensemble time series forecasts w/ Shiny</title>
+      <link>/post/2019/01/28/shiny-ensemble/</link>
+      <pubDate>Mon, 28 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2019/01/28/shiny-ensemble/</guid>
+      <description>Application Link (external)PurposeThis application takes in a .txt file with two columns delimited by a ‘|’. ex: ‘date’|‘value’ or more specifically yyyy-mm-dd|value. This was created for use in a live project, so thats the reason why these input restrictions exist. It also has the distinction of being my first Shiny app and as such I am inclined to leave it in it’s raw state. I probably wont make many changes to it, however i will consider making a better one from scratch in the future.</description>
+    </item>
+    
+  </channel>
+</rss>

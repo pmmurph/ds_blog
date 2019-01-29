@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on A Simple Data Science Blog…</title>
+    <link>/post/</link>
+    <description>Recent content in Posts on A Simple Data Science Blog…</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 28 Jan 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ensemble time series forecasts w/ Shiny</title>
+      <link>/post/2019/01/28/shiny-ensemble/</link>
+      <pubDate>Mon, 28 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2019/01/28/shiny-ensemble/</guid>
+      <description>Application Link (external)PurposeThis application takes in a .txt file with two columns delimited by a ‘|’. ex: ‘date’|‘value’ or more specifically yyyy-mm-dd|value. This was created for use in a live project, so thats the reason why these input restrictions exist. It also has the distinction of being my first Shiny app and as such I am inclined to leave it in it’s raw state. I probably wont make many changes to it, however i will consider making a better one from scratch in the future.</description>
+    </item>
+    
+    <item>
+      <title>Plots in Base R</title>
+      <link>/post/2019/01/26/plots-in-base-r/</link>
+      <pubDate>Sat, 26 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2019/01/26/plots-in-base-r/</guid>
+      <description>hist()plot()pairs()The base graphics package is uses the older S-language graphics lower level functions, not the newer grid functions that lattice or ggplot2 use. However, I find these legacy functions to be quick, easy to use and quite suitable for most exploratory tasks. We will use the newer packages to produce publish quality data graphics in time. For now lets look at the most commonly used base R graphing commands.</description>
+    </item>
+    
+    <item>
+      <title>Vectors and Data Types</title>
+      <link>/post/2019/01/24/data-types/</link>
+      <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2019/01/24/data-types/</guid>
+      <description>VectorsSubsettingTypesReal NumbersLogicalsStringsVectorsVectors are the basic building block of all data structures in R. All vectors have a length and type. There are no scalars in R only vectors of length 1. This lab will go through constructing them, sub setting them and then their various data types.
+2 # numeric vector of length 1## [1] 2c(2, 5, 8) # numeric vector of length 3## [1] 2 5 81:5 # numeric sequence of length 5## [1] 1 2 3 4 5seq(from=1, to=9, by=2) # numeric sequence by 2 ## [1] 1 3 5 7 9rep(2, 5) # numeric repeated ## [1] 2 2 2 2 2c(&amp;#39;a&amp;#39;=1, &amp;#39;b&amp;#39;=2, &amp;#39;c&amp;#39;=3) # named numeric vector## a b c ## 1 2 3SubsettingYou can select elements form a vector by position, value, or name.</description>
+    </item>
+    
+    <item>
+      <title>Loading Data</title>
+      <link>/post/2019/01/23/loading-data/</link>
+      <pubDate>Wed, 23 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2019/01/23/loading-data/</guid>
+      <description>read.tablereadrOther formats?read.tableThis should be one of the first functions you learn, it allows for adhoc data entry:
+data&amp;lt;- read.table(header= TRUE, text=&amp;quot;name ageHomer 45Marge 43Bart 13Lisa 11Maggie 2&amp;quot;)data## name age## 1 Homer 45## 2 Marge 43## 3 Bart 13## 4 Lisa 11## 5 Maggie 2Saving data as a csv is a very common operation, as this format can be opened in any text editor, sql client and/or analysis software including excel.</description>
+    </item>
+    
+  </channel>
+</rss>

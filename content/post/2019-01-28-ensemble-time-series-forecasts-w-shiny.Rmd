@@ -1,0 +1,54 @@
+---
+title: Ensemble time series forecasts w/ Shiny
+author: Patrick Murphy
+date: '2019-01-28'
+slug: shiny-ensemble
+categories:
+  - Shiny Applications
+tags: 
+  - time series
+  - ARIMA
+  - exp. smoothing
+  - ensemble model
+  - shiny
+---
+```{r include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+
+```
+
+<hr/>
+
+
+###<a href="https://murphy-patrick.shinyapps.io/ensemble_forecaster/" target="_blank">Application Link (external)</a>
+
+##Purpose
+This application takes in a .txt file with two columns delimited by a '|'.  ex: 'date'|'value' or more specifically yyyy-mm-dd|value.  This was created for use in a live project, so thats the reason why these input restrictions exist.  It also has the distinction of being my first Shiny app and as such I am inclined to leave it in it's raw state.  I probably wont make many changes to it, however i will consider making a better one from scratch in the future.
+
+##What does it do?
+The user can simply hit 'Run Models' and it will load a sample of monthly sales figures.  It will hold out the last 12 months by default, run three models and then an ensemble of the three.  The user can see the model outputs as well as the RMSE of all four model fits.  Using this one could adjust the weights of the three parent models and re-run on a forecast horizon.  The out put is printed in plain text afterwards.
+
+##Why is this better than a normal smoothing forecast?  
+This classic paper can go over the basic theory way better than I can :  
+***J. M. Bates and C. W. J. Granger, Source: OR, Vol. 20, No. 4 (Dec., 1969), pp. 451-468***     
+In R we can simuliate what happens to the variance of combined error vectors.  Assuming of course that the errors are unbiased.
+```{r ensem1}
+set.seed(423)
+epsilon1<- rnorm(120)
+epsilon2<- rnorm(120)
+combined<- .5*(epsilon1+epsilon2)
+var(epsilon1)
+var(epsilon2)
+var(combined)
+```
+Note that in this crude case, the variance of both 'forecast errors' are the same.  If one had a lower variance than you would naturally weight that forecast heavier.  
+```{r ensem2}
+set.seed(423)
+epsilon1<- rnorm(120, sd= 1)
+epsilon2<- rnorm(120, sd= 2)
+k<- var(epsilon1) / (var(epsilon1) + var(epsilon2)) # Formula for weight 'k' per Bates & Granger
+combined<- (1-k) * epsilon1 + k * epsilon2
+var(epsilon1)
+var(epsilon2)
+var(combined)
+```

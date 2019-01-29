@@ -1,0 +1,79 @@
+---
+title: Vectors and Data Types
+author: Patrick Murphy
+date: '2019-01-24'
+slug: data-types
+categories:
+  - R Basics
+tags:
+  - base R
+  - vectors
+  - data types
+output:
+  blogdown::html_page:
+    toc: true
+---
+```{r include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+
+```
+<hr/>  
+
+##Vectors
+Vectors are the basic building block of all data structures in R.  All vectors have a length and type.  There are no scalars in R only vectors of length 1.  This lab will go through constructing them, sub setting them and then their various data types.  
+```{r vec1}
+2                       # numeric vector of length 1
+c(2, 5, 8)              # numeric vector of length 3
+1:5                     # numeric sequence of length 5
+seq(from=1, to=9, by=2) # numeric sequence by 2 
+rep(2, 5)               # numeric repeated 
+c('a'=1, 'b'=2, 'c'=3)  # named numeric vector
+```
+##Subsetting
+You can select elements form a vector by position, value, or name.
+```{r vec2}
+x<- c('a'=3, 'b'=7, 'c'=13) 
+x[2]
+x[x == 3]
+x[x > 5]
+x['c']
+```
+##Types
+###Real Numbers
+Integers and double precision floating point decimals (doubles) are the constructs used by R to represent the ${\rm I\!R}$ line.  They go from ${-\infty}$ to ${\infty}$ and include 0.
+```{r vec3}
+x <- c(-Inf,-45.7,0,56,Inf)
+str(x)
+is.double(x)         # numerics are stored as doubles by default
+y <- c(-4L, 5L, 49L) # declare integers explicitly with 'L'
+str(y)
+z <- c(x, y)
+str(z)               # upon concatention integers will coerce into doubles
+```
+###Logicals
+True and false are represented by a 1 and 0 respectively.  They are typically returned by logical expressions, but can also be declared.
+```{r vec5}
+2 + 2 == 4           #equality is tested with '=='
+3 > 1
+(3 > 1) & (3 > 5)    #parenthesis and set operators can be used : & == 'and' , | == 'or'  
+(3 > 1) | (3 > 5)   
+x<- 'cat' == 'dog'   #logicals can be stored and can be used on just about any data type
+TRUE + 2             #math will coerce a logical into its numerical representation
+c(TRUE, 'NOT TRUE')  #concatentation with other data types will always coerce a logical
+```
+###Strings
+What do ID numbers, street address numbers, and phone numbers have in common?  The short answer is that you don't perform any maths on them.  Descriptive data of a qualitative nature is usually best stored as a string.  Strings will never coerce upon concatenation, so they are ideal for ID's or 'primary keys'.
+```{r vec6}
+address <- c(742, 'Evergreen', 'Terrace')  # 742 will coerce to a string
+nchar(address)
+toupper(address)
+paste(address[2], address[3])
+address2 <- paste(address, collapse = ' ')
+address2
+gsub('[^[:digit:]]','', address2)      # regular expression used to parse the numeric address
+```
+
+Unlike numbers strings are an invention created by us humans for us humans.  Indeed, all data collected or entered by human beings will have to parsed from a string at some point.  Don't believe me?  When you look at a number, say the number 5, what do you see?  Is it the same thing that a computer sees?  Not even close.  We arbitrarily invented symbols to help us represent the idea of the number 5.  
+
+Those are the basic data types, there are a few we didn't review, namely factors, complex and raw vectors.  I'll do some labs on those in future posts.
+

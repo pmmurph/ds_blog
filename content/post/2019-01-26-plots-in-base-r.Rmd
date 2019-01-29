@@ -1,0 +1,103 @@
+---
+title: Plots in Base R
+author: Patrick Murphy
+date: '2019-01-26'
+slug: plots-in-base-r
+categories:
+  - R Basics
+tags:
+  - base R
+  - plots
+  - scatter plots
+  - plot matrix
+  - box plot
+  - histogram
+output:
+  blogdown::html_page:
+    toc: true
+---
+```{r include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+
+```
+<hr/>  
+
+The base graphics package is uses the older S-language graphics lower level functions, not the newer grid functions that lattice or ggplot2 use.  However, I find these legacy functions to be quick, easy to use and quite suitable for most exploratory tasks.  We will use the newer packages to produce publish quality data graphics in time.  For now lets look at the most commonly used base R graphing commands.  
+
+##hist()
+Hist takes x as its first argument which is usually a vector.  Like most statistical software R has built in sample data that we can play around with.  Two good ones are iris and mtcars, ? them to find out more.
+```{r plot1}
+str(iris)
+attach(iris)    # this loads iris into a search path, so we dont have to type it anymore
+hist(Sepal.Length)
+```
+
+Hist can also be used to plot densities.  Below the y axis has been transformed to measure the probabilty density of sepal lengths.  The red line shows a smoothed kernal density in contrast to a theoretical normal curve in green.  
+```{r plot1b}
+hist(Sepal.Length,
+     freq = FALSE,
+     breaks = seq(from=3, to=9, by=.333),      # always check the breaks of a histogram
+     main= 'Distribution of Sepal Length',
+     xlab= 'Length in cm',
+     col='grey')
+lines(density(Sepal.Length), col= 'red')
+x <- seq(3, 9, length=100)
+lines(x, dnorm(x, mean = mean(Sepal.Length), sd= sd(Sepal.Length)), col= 'green')
+```
+
+##plot()  
+Plot takes multiple vectors as inputs.  It can also plot functions and objects. 
+```{r plot2}
+plot(Petal.Length, Petal.Width)  # A basic scatterplot
+plot(Petal.Length, Petal.Width,  # A better one
+     frame.plot = FALSE,
+     main = 'Petal width as a f() of length',
+     xlab = 'Length (cm)', ylab = 'Width (cm)',
+     cex = .75, pch = 19)
+iris_fit_1<- lm(Petal.Width ~ Petal.Length) # With a regression line
+abline(iris_fit_1, col = 'red')
+text(3, .5, col = 'red', cex = .8, 
+     labels = paste('Slope =',round(coef(iris_fit_1)[2],digits = 2)))
+```
+
+Many objects have methods that pass to plot.  
+```{r plot3}
+par(mfrow = c(2, 2))
+plot(iris_fit_1)      # Plot methos for linear model objects return 4 diagnostic plots
+
+attach(mtcars)        # factors return barplots
+plot(factor(vs),main= 'vs')
+plot(factor(am),main= 'am')
+plot(factor(gear),main= 'gear')
+plot(factor(carb),main= 'carb')
+
+par(mfrow = c(1, 1))
+str(AirPassengers)    # Time series objects return a series or line plot
+plot(AirPassengers)
+```
+
+##pairs()  
+If you are analizing datasets with 2 or more independent variables, then the pairs function will provide you with a high level view of the feature correlations.  
+```{r plot4}
+pairs(iris)
+```
+
+For larger sets you will have to zoom in, and of course there is an upper bound for how many features you can feasibly plot in this way.  
+
+```{r plot4b, out.width='100%'}
+pairs(mtcars, cex=.5, pch=19)
+pairs(~mpg+disp+hp+wt)   # zoom in on selected features
+pairs(iris,    # Most of these plot commands can take funtions as arguments
+      lower.panel = function(x, y){
+                      usr <- par("usr"); on.exit(par(usr))
+                      par(usr = c(0, 1, 0, 1))
+                      r <- round(cor(x, y), digits=2)
+                      txt <- paste0("R = ", r)
+                      text(0.5, 0.5, txt)
+      },
+      upper.panel = function(x, y){
+                      points(x,y, pch = 19, col= Species)
+      }
+)
+```
+Alot of custimization can be done with base R graphics.

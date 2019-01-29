@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>box plot on A Simple Data Science Blog…</title>
+    <link>/tags/box-plot/</link>
+    <description>Recent content in box plot on A Simple Data Science Blog…</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 26 Jan 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/box-plot/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Plots in Base R</title>
+      <link>/post/2019/01/26/plots-in-base-r/</link>
+      <pubDate>Sat, 26 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2019/01/26/plots-in-base-r/</guid>
+      <description>hist()plot()pairs()The base graphics package is uses the older S-language graphics lower level functions, not the newer grid functions that lattice or ggplot2 use. However, I find these legacy functions to be quick, easy to use and quite suitable for most exploratory tasks. We will use the newer packages to produce publish quality data graphics in time. For now lets look at the most commonly used base R graphing commands.</description>
+    </item>
+    
+  </channel>
+</rss>
