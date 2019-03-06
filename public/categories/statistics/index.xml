@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Statistics on A Simple Data Science Blog…</title>
+    <link>/categories/statistics/</link>
+    <description>Recent content in Statistics on A Simple Data Science Blog…</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 05 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/statistics/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Simulating a Binomial Event</title>
+      <link>/post/2019/03/05/simulating-a-binomial-event/</link>
+      <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2019/03/05/simulating-a-binomial-event/</guid>
+      <description>SimulationConfidenceLearning a population proportionSimulationThis is going to be a simple experiment, we want to simulate a dice game and iteratively improve our confidence in the fairness of those dice. Theoretically rolling a 7 or 11 should happen with P = .222 (8/36).
+set.seed(234)dice &amp;lt;- c(1,2,3,4,5,6)d1 &amp;lt;- replicate(1000, sample(dice,1))d2 &amp;lt;- replicate(1000, sample(dice,1))rolls &amp;lt;- d1 + d2fair_711 &amp;lt;- ifelse(rolls == 7 | rolls == 11, 1, 0)mean(fair_711)## [1] 0.</description>
+    </item>
+    
+  </channel>
+</rss>

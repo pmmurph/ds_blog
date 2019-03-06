@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1551908463145.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3388592977",
+    "id" : "2581DFEE",
+    "lastKnownWriteTime" : 1551910267,
+    "last_content_update" : 1551910267615,
+    "path" : "C:/Users/pm/Work/ds_blog/content/post/2019-03-05-simulating-a-binomial-event.Rmd",
+    "project_path" : "content/post/2019-03-05-simulating-a-binomial-event.Rmd",
+    "properties" : {
+        "cursorPosition" : "54,47",
+        "scrollLine" : "40"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

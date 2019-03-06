@@ -1,0 +1,95 @@
+---
+title: Simulating a Binomial Event
+author: Patrick Murphy
+date: '2019-03-05'
+slug: simulating-a-binomial-event
+categories:
+  - Statistics
+tags:
+  - simulations
+  - binomial
+output:
+  blogdown::html_page:
+    toc: true
+---
+```{r include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+<hr/>  
+
+##Simulation
+This is going to be a simple experiment, we want to simulate a dice game and iteratively improve our confidence in the fairness of those dice.  Theoretically rolling a 7 or 11 should happen with P = .222 (8/36).
+```{r simbin}
+set.seed(234)
+dice <- c(1,2,3,4,5,6)
+d1 <- replicate(1000, sample(dice,1))
+d2 <- replicate(1000, sample(dice,1))
+rolls <- d1 + d2
+fair_711 <- ifelse(rolls == 7 | rolls == 11, 1, 0)
+mean(fair_711)
+```
+Pretty close, now lets load two dice.
+```{r simbin2}
+set.seed(235)
+dice <- c(1,2,3,4,5,6)
+d1 <- replicate(1000, sample(dice,1, prob = c(.1, .1, .5, .1, .1, .1)))
+d2 <- replicate(1000, sample(dice,1, prob = c(.1, .1, .1, .5, .1, .1)))
+rolls <- d1 + d2
+loaded_711 <- ifelse(rolls == 7 | rolls == 11, 1, 0)
+mean(loaded_711)
+```
+I bet you thought that would be higher.  Loading a die increases the probability of rolling the opposite number and decreases the probability of every other number, including 5 & 6.  This mitigates the effect of cheating.  But a 10% increase in probability isn't too shabby.  
+
+##Confidence
+Exact binomial tests will tell give us a confidence interval using exact binomial probabilities.  There are a few other ways to get confidence intervals for a proportion, you could approximate using a normal distribution for example. 
+```{r btest}
+# exact method
+# this function returns an interval and gives a pvalue testing a null p
+binom.test(x= sum(fair_711), n= length(fair_711), p= 8/36)
+
+# normal aprox.
+phat <- mean(fair_711)
+qnorm(
+  c(.025, .975),
+  mean= phat,
+  sd= sqrt(phat * (1- phat)/ length(fair_711)) 
+)
+
+```
+
+##Learning a population proportion
+Now we will put both of the above techniques into practice.  We will observe the probability of our '7 or 11' event over time.
+```{r learn, warning= FALSE, message=FALSE, cache=TRUE}
+library(ggplot2)
+library(gganimate)
+
+cum_success <- cumsum(fair_711)
+n_trials <- c(1:length(fair_711))
+cum_phat <- cum_success/n_trials
+cum_low <- qnorm(.025,  mean= cum_phat,
+  sd= sqrt(cum_phat * (1- cum_phat)/ n_trials))
+cum_hi <- qnorm(.975,  mean= cum_phat,
+  sd= sqrt(cum_phat * (1- cum_phat)/ n_trials))
+
+sim_rolls <- data.frame(
+  cum_success = cum_success,
+  cum_phat = cum_phat,
+  cum_low = cum_low,
+  cum_hi = cum_hi,
+  n_trials = n_trials
+)
+
+ggplot(data= sim_rolls)+
+  geom_line(aes(x= n_trials, y= cum_phat, col='red'))+
+  geom_line(aes(x= n_trials, y= cum_low))+
+  geom_line(aes(x= n_trials, y= cum_hi))+
+  scale_y_continuous(limits = c(0, .5))+
+  labs(title = 'Confidence in P hat over time',
+       subtitle = 'for 1000 Simulated Craps rolls',
+       x= 'Roll',
+       y= 'P Hat w/ CI')+
+  theme(legend.position = 'none')+
+  transition_reveal(n_trials)
+
+
+```

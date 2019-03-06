@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Simulating a Binomial Event | A Simple Data Science Blog…</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="/css/default.css" rel="stylesheet" id="theme-stylesheet">
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+      <li><a href="/references/">References</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title">Simulating a Binomial Event</span></h1>
+<h2 class="author">Patrick Murphy</h2>
+<h2 class="date">2019/03/05</h2>
+</div>
+
+<main>
+
+
+<div id="TOC">
+<ul>
+<li><a href="#simulation">Simulation</a></li>
+<li><a href="#confidence">Confidence</a></li>
+<li><a href="#learning-a-population-proportion">Learning a population proportion</a></li>
+</ul>
+</div>
+
+<hr/>
+<div id="simulation" class="section level2">
+<h2>Simulation</h2>
+<p>This is going to be a simple experiment, we want to simulate a dice game and iteratively improve our confidence in the fairness of those dice. Theoretically rolling a 7 or 11 should happen with P = .222 (8/36).</p>
+<pre class="r"><code>set.seed(234)
+dice &lt;- c(1,2,3,4,5,6)
+d1 &lt;- replicate(1000, sample(dice,1))
+d2 &lt;- replicate(1000, sample(dice,1))
+rolls &lt;- d1 + d2
+fair_711 &lt;- ifelse(rolls == 7 | rolls == 11, 1, 0)
+mean(fair_711)
+## [1] 0.24</code></pre>
+<p>Pretty close, now lets load two dice.</p>
+<pre class="r"><code>set.seed(235)
+dice &lt;- c(1,2,3,4,5,6)
+d1 &lt;- replicate(1000, sample(dice,1, prob = c(.1, .1, .5, .1, .1, .1)))
+d2 &lt;- replicate(1000, sample(dice,1, prob = c(.1, .1, .1, .5, .1, .1)))
+rolls &lt;- d1 + d2
+loaded_711 &lt;- ifelse(rolls == 7 | rolls == 11, 1, 0)
+mean(loaded_711)
+## [1] 0.304</code></pre>
+<p>I bet you thought that would be higher. Loading a die increases the probability of rolling the opposite number and decreases the probability of every other number, including 5 &amp; 6. This mitigates the effect of cheating. But a 10% increase in probability isn’t too shabby.</p>
+</div>
+<div id="confidence" class="section level2">
+<h2>Confidence</h2>
+<p>Exact binomial tests will tell give us a confidence interval using exact binomial probabilities. There are a few other ways to get confidence intervals for a proportion, you could approximate using a normal distribution for example.</p>
+<pre class="r"><code># exact method
+# this function returns an interval and gives a pvalue testing a null p
+binom.test(x= sum(fair_711), n= length(fair_711), p= 8/36)
+## 
+##  Exact binomial test
+## 
+## data:  sum(fair_711) and length(fair_711)
+## number of successes = 240, number of trials = 1000, p-value =
+## 0.1831
+## alternative hypothesis: true probability of success is not equal to 0.2222222
+## 95 percent confidence interval:
+##  0.2138268 0.2677134
+## sample estimates:
+## probability of success 
+##                   0.24
+
+# normal aprox.
+phat &lt;- mean(fair_711)
+qnorm(
+  c(.025, .975),
+  mean= phat,
+  sd= sqrt(phat * (1- phat)/ length(fair_711)) 
+)
+## [1] 0.2135296 0.2664704</code></pre>
+</div>
+<div id="learning-a-population-proportion" class="section level2">
+<h2>Learning a population proportion</h2>
+<p>Now we will put both of the above techniques into practice. We will observe the probability of our ‘7 or 11’ event over time.</p>
+<pre class="r"><code>library(ggplot2)
+library(gganimate)
+
+cum_success &lt;- cumsum(fair_711)
+n_trials &lt;- c(1:length(fair_711))
+cum_phat &lt;- cum_success/n_trials
+cum_low &lt;- qnorm(.025,  mean= cum_phat,
+  sd= sqrt(cum_phat * (1- cum_phat)/ n_trials))
+cum_hi &lt;- qnorm(.975,  mean= cum_phat,
+  sd= sqrt(cum_phat * (1- cum_phat)/ n_trials))
+
+sim_rolls &lt;- data.frame(
+  cum_success = cum_success,
+  cum_phat = cum_phat,
+  cum_low = cum_low,
+  cum_hi = cum_hi,
+  n_trials = n_trials
+)
+
+ggplot(data= sim_rolls)+
+  geom_line(aes(x= n_trials, y= cum_phat, col=&#39;red&#39;))+
+  geom_line(aes(x= n_trials, y= cum_low))+
+  geom_line(aes(x= n_trials, y= cum_hi))+
+  scale_y_continuous(limits = c(0, .5))+
+  labs(title = &#39;Confidence in P hat over time&#39;,
+       subtitle = &#39;for 1000 Simulated Craps rolls&#39;,
+       x= &#39;Roll&#39;,
+       y= &#39;P Hat w/ CI&#39;)+
+  theme(legend.position = &#39;none&#39;)+
+  transition_reveal(n_trials)</code></pre>
+<p><img src="/post/2019-03-05-simulating-a-binomial-event_files/figure-html/learn-1.gif" /><!-- --></p>
+</div>
+
+</main>
+
+  <footer>
+  <script src="//yihui.name/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script async src="//yihui.name/js/center-img.js"></script>
+
+  
+  <hr/>
+  &copy; <a href="https://patmmurphy.com">Patrick Murphy</a> 2018-2019 | <a href="https://github.com/pmmurph">Github</a> | <a href="https://www.linkedin.com/in/patmmurphy">Linkedin</a>
+  
+  </footer>
+  </body>
+</html>
+

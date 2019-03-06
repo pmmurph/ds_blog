@@ -1,0 +1,125 @@
+[0m[0K[?25lMicrosoft Windows [Version 10.0.17763.316][0K
+(c) 2018 Microsoft Corporation. All rights reserved.[0K
+[0K
+C:\Users\pm\Work\ds_blog>[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0m[1;1H[2J[0mC:\Users\pm\Work\ds_blog>[0K[?25l
+C:\Users\pm\Work\ds_blog>[0K[?25hg[0Ki[0Kt[0K[30G[?25lC:\Users\pm\Work\ds_blog>git a[0K[?25hd[0Kd[0K[34G[?25lC:\Users\pm\Work\ds_blog>git add .[0K[?25h[?25l
+[0K[?25h]0;  - git  add .warning: LF will be replaced by CRLF in .Rhistory.[0K[?25l
+The file will have its original line endings in your working directory[0K
+warning: LF will be replaced by CRLF in .Rproj.user/shared/notebooks/paths.[0K
+The file will have its original line endings in your working directory[0K
+warning: LF will be replaced by CRLF in public/categories/index.xml.[0K
+The file will have its original line endings in your working directory[0K
+warning: LF will be replaced by CRLF in public/index.html.[0K
+The file will have its original line endings in your working directory[0K
+[0K[?25hwarning: LF will be replaced by CRLF in public/sitemap.xml.[0K[?25l
+The file will have its original line endings in your working directory[0K
+warning: LF will be replaced by CRLF in public/tags/index.xml.[0K
+The file will have its original line endings in your working directory[0K
+[0K[?25h]0; error: open(".Rproj.user/C1960C12/console06/357FC8A0"): Permission denied[0K[?25l
+error: unable to index file '.Rproj.user/C1960C12/console06/357FC8A0'[0K
+fatal: adding files failed[0K
+[0K
+C:\Users\pm\Work\ds_blog>[0K[?25hg[0Ki[0Kt[0K[30G[?25lC:\Users\pm\Work\ds_blog>git c[0K[?25ho[0Km[0Km[0Ki[0Kt[0K[37G[?25lC:\Users\pm\Work\ds_blog>git commit -[0K[?25hm[0K[40G[?25lC:\Users\pm\Work\ds_blog>git commit -m n[0K[?25he[0Kw[0K[?25lC:\Users\pm\Work\ds_blog>git commit -m ne[0K[?25h[?25lC:\Users\pm\Work\ds_blog>git commit -m n[0K[?25h[?25lC:\Users\pm\Work\ds_blog>git commit -m[0K[40G[?25h[?25lC:\Users\pm\Work\ds_blog>git commit -m '[0K[?25h[?25lC:\Users\pm\Work\ds_blog>git commit -m[0K[40G[?25h[?25lC:\Users\pm\Work\ds_blog>git commit -m "[0K[?25hb[0Ki[0Kn[0Ko[0Km[0K[47G[?25lC:\Users\pm\Work\ds_blog>git commit -m "binom p[0K[?25ho[0Ks[0Kt[0K"[0K[?25l
+[0K[?25h]0;  - git  commit -m "binom post"[?25l
+*** Please tell me who you are.[0K
+[0K
+Run[0K
+[0K
+  git config --global user.email "you@example.com"[0K
+  git config --global user.name "Your Name"[0K
+[0K
+to set your account's default identity.[0K
+Omit --global to set the identity only in this repository.[0K
+[0K
+fatal: unable to auto-detect email address (got 'pm@DESKTOP-TF87CT7.(none)')[0K
+[0K[?25h]0; [?25l
+C:\Users\pm\Work\ds_blog>[0K[?25hg[0Ki[0Kt[0K[30G[?25lC:\Users\pm\Work\ds_blog>git c[0K[?25ho[0Kn[0Kf[0Ki[0Kg[0K[37G[?25lC:\Users\pm\Work\ds_blog>git config -[0K[?25h-[0Kg[0Kl[0Ko[0Kb[0Ka[0Kl[0K[46G[?25lC:\Users\pm\Work\ds_blog>git config --global p[0K[?25hm[0Ku[0Kr[0Kp[0Kh[0Ks[0K@[0Kg[0Km[0Ka[0Ki[0Kl[0K.[0Kc[0Ko[0Km[0K"[0K[63G[62G[61G[60G[58G[57G[56G[54G[53G[52G[51G[50G[49G[48G[47G[46G[45G[44G[43G[44G[45G[46G[?25lC:\Users\pm\Work\ds_blog>git config --global "pmurphs@gmail.com"[0K[47G[?25h]0;  - git  config --global "pmurphs@gmail.com"[?25l
+[0K[?25herror: invalid key: pmurphs@gmail.com[0K[?25l
+[0K[?25h]0; [?25l
+C:\Users\pm\Work\ds_blog>[0K[?25hgit config --global "pmurphs@gmail.com"[0K[64G[63G[62G[61G[60G[59G[58G[57G[56G[55G[54G[53G[52G[51G[50G[49G[47G[46G[45G[44G[43G[42G[41G[40G[39G[38G[37G[36G[35G[34G[35G[36G[37G[38G[39G[40G[41G[42G[43G[44G[45G[46G[45G[46G[?25lC:\Users\pm\Work\ds_blog>git config --global u"pmurphs@gmail.com"[0K[47G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global us"pmurphs@gmail.com"[0K[48G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global use"pmurphs@gmail.com"[0K[49G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user"pmurphs@gmail.com"[0K[50G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user."pmurphs@gmail.com"[0K[51G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.e"pmurphs@gmail.com"[0K[52G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.em"pmurphs@gmail.com"[0K[53G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.ema"pmurphs@gmail.com"[0K[54G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.emai"pmurphs@gmail.com"[0K[55G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.email"pmurphs@gmail.com"[0K[56G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.email "pmurphs@gmail.com"[0K[57G[?25h]0;  - git  config --global user.email "pmurphs@gmail.com"[?25l
+[0K[?25h]0; [?25l
+C:\Users\pm\Work\ds_blog>[0K[?25hgit config --global user.email "pmurphs@gmail.com"[0K[75G[74G[73G[72G[70G[69G[68G[67G[66G[65G[64G[63G[62G[61G[60G[59G[58G[56G[55G[53G[52G[51G[50G[51G[?25lC:\Users\pm\Work\ds_blog>git config --global user.mail "pmurphs@gmail.com"[0K[51G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.ail "pmurphs@gmail.com"[0K[51G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.il "pmurphs@gmail.com"[0K[51G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.l "pmurphs@gmail.com"[0K[51G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user. "pmurphs@gmail.com"[0K[51G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.n "pmurphs@gmail.com"[0K[52G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.na "pmurphs@gmail.com"[0K[53G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.nam "pmurphs@gmail.com"[0K[54G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "pmurphs@gmail.com"[0K[55G[?25h[56G[57G[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "murphs@gmail.com"[0K[57G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "urphs@gmail.com"[0K[57G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "rphs@gmail.com"[0K[57G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "phs@gmail.com"[0K[57G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "hs@gmail.com"[0K[57G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "s@gmail.com"[0K[57G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "@gmail.com"[0K[57G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "gmail.com"[0K[57G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "mail.com"[0K[57G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "ail.com"[0K[57G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "il.com"[0K[57G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "l.com"[0K[57G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name ".com"[0K[57G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "com"[0K[57G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "om"[0K[57G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "m"[0K[57G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name ""[0K[57G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "P"[0K[58G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "Pa"[0K[59G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "Pat"[0K[60G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "Patr"[0K[61G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "Patri"[0K[62G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "Patric"[0K[63G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "Patrick"[0K[64G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "Patrick "[0K[65G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "Patrick M"[0K[66G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "Patrick Mu"[0K[67G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "Patrick Mur"[0K[68G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "Patrick Murp"[0K[69G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "Patrick Murph"[0K[70G[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global user.name "Patrick Murphy"[0K[71G[?25h]0;  - git  config --global user.name "Patrick Murphy"[?25l
+[0K[?25h]0; [?25l
+C:\Users\pm\Work\ds_blog>[0K[?25hgit config --global user.name "Patrick Murphy"[0K[?25lC:\Users\pm\Work\ds_blog>git config --global user.email "pmurphs@gmail.com"[0K[?25h[?25lC:\Users\pm\Work\ds_blog>git config --global "pmurphs@gmail.com"[0K[?25h[?25lC:\Users\pm\Work\ds_blog>git commit -m "binom post"[0K[?25h]0;  - git  commit -m "binom post"[?25l
+[0K[?25hOn branch master[0K[?25l
+Your branch is up to date with 'origin/master'.[0K
+[0K
+Changes not staged for commit:[0K
+        [0;31mmodified:   .Rhistory[0m[0K
+        [0;31mdeleted:    .Rproj.user/shared/notebooks/36654CAF-2019-01-28-ensemble-time-series-forecasts-w-shiny/1/[0Ks
+/chunks.json[0m[0K
+        [0;31mdeleted:    .Rproj.user/shared/notebooks/E77B9C20-2019-01-26-plots-in-base-r/1/s/chunks.json[0m[0K
+        [0;31mdeleted:    .Rproj.user/shared/notebooks/F252E7A3-2019-01-29-linear-modeler-w-shiny/1/s/chunks.json[0m[0K
+        [0;31mmodified:   .Rproj.user/shared/notebooks/paths[0m[0K
+        [0;31mmodified:   public/categories/index.html[0m[0K
+        [0;31mmodified:   public/categories/index.xml[0m[0K
+        [0;31mmodified:   public/index.html[0m[0K
+        [0;31mmodified:   public/index.xml[0m[0K
+        [0;31mmodified:   public/post/index.html[0m[0K
+        [0;31mmodified:   public/post/index.xml[0m[0K
+        [0;31mmodified:   public/sitemap.xml[0m[0K
+        [0;31mmodified:   public/tags/index.html[0m[0K
+        [0;31mmodified:   public/tags/index.xml[0m[0K
+[0K
+Untracked files:[0K
+        [0;31m.Rproj.user/C1960C12/[0m[0K
+        [0;31m.Rproj.user/shared/notebooks/DB9163E6-2019-03-05-simulating-a-binomial-event/[0m[0K
+        [0;31mblogdown/[0m[0K
+        [0;31mcontent/post/2019-03-05-simulating-a-binomial-event.Rmd[0m[0K
+        [0;31mcontent/post/2019-03-05-simulating-a-binomial-event.html[0m[0K
+        [0;31mpublic/categories/statistics/[0m[0K
+        [0;31mpublic/post/2019-03-05-simulating-a-binomial-event_files/[0m[0K
+        [0;31mpublic/post/2019/03/[0m[0K[9G[?25h]0; [?25l
+        [0;31mpublic/tags/binomial/[0m[0K
+        [0;31mpublic/tags/simulations/[0m[0K
+        [0;31mstatic/post/2019-03-05-simulating-a-binomial-event_files/[0m[0K
+[0K
+no changes added to commit[0K
+[0K
+C:\Users\pm\Work\ds_blog>[0K[?25hg[0Ki[0Kt[0K[30G[?25lC:\Users\pm\Work\ds_blog>git p[0K[?25hu[0Ks[0Kh[0K]0;  - git  push[?25l
+[0K[?25hLogon failed, use ctrl+c to cancel basic credential prompt.[0K[?25l
+[0K[?25herror: cannot spawn rpostback-askpass: No such file or directory[0K[?25l
+[0K[?25hUsername for 'https://github.com':[0K[36G[?25lUsername for 'https://github.com': p[0K[?25hm[0Ku[0Kr[0Kp[0Kh[0K[41G[40G[39G[38G[37G[?25lUsername for 'https://github.com': pmmurph[0K[38G[?25h[?25l
+error: cannot spawn rpostback-askpass: No such file or directory[0K
+[0K[?25hPassword for 'https://pmmurph@github.com':[0K[44G]0; [?25l
+[0K
+C:\Users\pm\Work\ds_blog>[0K[?25hgit push[0K]0;  - git  push[?25l
+[0K[?25hLogon failed, use ctrl+c to cancel basic credential prompt.[0K[?25l
+[0K[?25herror: cannot spawn rpostback-askpass: No such file or directory[0K[?25l
+[0K[?25hUsername for 'https://github.com':[0K[36G[?25l
+error: cannot spawn rpostback-askpass: No such file or directory[0K
+[0K[?25hPassword for 'https://github.com':[0K[36G[?25l
+[0K[?25hremote: Anonymous access to pmmurph/ds_blog.git denied.[0K[?25l
+fatal: Authentication failed for 'https://github.com/pmmurph/ds_blog.git/'[0K
+[0K[?25h]0; [?25l
+C:\Users\pm\Work\ds_blog>[0K[?25hgit push[0K]0;  - git  push[?25l
+[0K[?25hEverything up-to-date[0K[?25l
+[0K[?25h]0; [?25l
+C:\Users\pm\Work\ds_blog>[0K[?25h[?25l
+C:\Users\pm\Work\ds_blog>[0K[?25hgit push[0K[?25lC:\Users\pm\Work\ds_blog>git pus[0K[?25h[?25lC:\Users\pm\Work\ds_blog>git pu[0K[?25h[?25lC:\Users\pm\Work\ds_blog>git p[0K[?25h[?25lC:\Users\pm\Work\ds_blog>git[0K[30G[?25h[29G[30G[?25lC:\Users\pm\Work\ds_blog>git a[0K[?25hd[0Kd[0K[34G[?25lC:\Users\pm\Work\ds_blog>git add .[0K[?25h
